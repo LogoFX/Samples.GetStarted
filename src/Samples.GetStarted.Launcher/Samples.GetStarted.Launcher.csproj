@@ -216,10 +216,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Samples.Client.Model\Samples.Client.Model.csproj">
-      <Project>{33766857-5fce-4c2c-b167-e76a9f521ff0}</Project>
-      <Name>Samples.Client.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Samples.GetStarted.Presentation.Shared\Samples.GetStarted.Presentation.Shared.csproj">
       <Project>{a4245326-bb01-4b7a-b4de-6ebca9c8094e}</Project>
       <Name>Samples.GetStarted.Presentation.Shared</Name>

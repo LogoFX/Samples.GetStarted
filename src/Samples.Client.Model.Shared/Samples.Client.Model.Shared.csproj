@@ -6,6 +6,10 @@
     <RootNamespace>Samples.Client.Model.Shared</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Mvvm.Model" Version="1.1.1-rc4" />
   </ItemGroup>
