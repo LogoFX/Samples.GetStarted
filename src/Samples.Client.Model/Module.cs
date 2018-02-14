@@ -10,9 +10,9 @@ namespace Samples.Client.Model
     {
         public void RegisterModule(IDependencyRegistrator dependencyRegistrator)
         {
-            dependencyRegistrator
-                .AddSingleton<ILoginService, LoginService>()
+            dependencyRegistrator               
                 .AddSingleton<IDataService, DataService>();
+            //TODO:Add more services registration
         }
     }
 }

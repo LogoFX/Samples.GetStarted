@@ -10,6 +10,6 @@
         Height="350" Width="350"
         d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="Hello LogoFX" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" />
+        <TextBlock Text="{Binding DisplayName, Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" />
     </Grid>
 </Window>

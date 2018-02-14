@@ -3,11 +3,8 @@ using LogoFX.Client.Mvvm.Model.Contracts;
 
 namespace Samples.Client.Model.Contracts
 {    
+    //TODO: Change Id type to another if needed: string, int, etc.
     public interface IAppModel : IModel<Guid>, IEditableModel
-    {
-        /// <summary>
-        /// Designates whether model should be discarded when cancelling changes        
-        /// </summary>
-        bool IsNew { get; set; }
+    {       
     }
 }
