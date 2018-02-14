@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Samples.Client.Data.Contracts.Providers;
 using Samples.Client.Model.Contracts;
 using Samples.Client.Model.Shared;
 
@@ -8,14 +8,7 @@ namespace Samples.Client.Model
 {
     [UsedImplicitly]
     class LoginService : ILoginService
-    {
-        private readonly ILoginProvider _loginProvider;
-
-        public LoginService(ILoginProvider loginProvider)
-        {
-            _loginProvider = loginProvider;
-        }
-
+    {        
         public async Task LoginAsync(string username, string password)
         {
             await ServiceRunner.RunAsync(() => LoginInternal(username, password));
@@ -25,8 +18,14 @@ namespace Samples.Client.Model
         {
             await ServiceRunner.RunAsync(() =>
             {
-                _loginProvider.Login(username, password);
-                UserContext.Current = new User(username);
+                if (username.ToLower() == "admin" && password.ToLower() == "pass")
+                {
+                    UserContext.Current = new User(username);
+                }
+                else
+                {
+                    throw new Exception("Invalid credentials");
+                }                
             });
         }
     }

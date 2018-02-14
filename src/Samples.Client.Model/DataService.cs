@@ -1,31 +1,36 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using LogoFX.Client.Core;
 using LogoFX.Core;
-using Samples.Client.Data.Contracts.Providers;
 using Samples.Client.Model.Contracts;
-using Samples.Client.Model.Mappers;
+using Samples.Client.Model.Fake;
 
 namespace Samples.Client.Model
 {
     [UsedImplicitly]
     internal sealed class DataService : NotifyPropertyChangedBase<DataService>, IDataService
-    {
-        private readonly IWarehouseProvider _warehouseProvider;        
+    {              
         private readonly RangeObservableCollection<IWarehouseItem> _warehouseItems = new RangeObservableCollection<IWarehouseItem>();        
+        private readonly WarehouseItemsStorage _storage = new WarehouseItemsStorage();
 
-        public DataService(IWarehouseProvider warehouseProvider, IEventsProvider eventsProvider)
-        {
-            _warehouseProvider = warehouseProvider;           
+        public DataService()
+        {           
+            _storage.WithWarehouseItems(new[]
+            {
+                new WarehouseItem("PC", 25.43, 8),
+                new WarehouseItem("Acme", 10, 10),
+                new WarehouseItem("Bacme", 20, 3),
+                new WarehouseItem("Exceed", 0.4, 100),
+                new WarehouseItem("Acme2", 1, 2)                
+            });
         }
 
         private async Task GetWarehouseItemsInternal()
         {
             await ServiceRunner.RunAsync(() =>
             {
-                var warehouseItems = _warehouseProvider.GetWarehouseItems().Select(WarehouseMapper.MapToWarehouseItem);
+                var warehouseItems = _storage.GetWarehouseItems();
                 _warehouseItems.Clear();
                 _warehouseItems.AddRange(warehouseItems);
             });
@@ -53,22 +58,14 @@ namespace Samples.Client.Model
 
         async Task IDataService.SaveWarehouseItemAsync(IWarehouseItem item)
         {
-            var dto = WarehouseMapper.MapToWarehouseDto(item);
-            if (item.IsNew)
-            {
-                await ServiceRunner.RunAsync(() => _warehouseProvider.CreateWarehouseItem(dto));
-            }
-            else
-            {
-                await ServiceRunner.RunAsync(() => _warehouseProvider.UpdateWarehouseItem(dto));
-            }            
+            await ServiceRunner.RunAsync(() => _storage.SaveWarehouseItem(item));
         }
 
         async Task IDataService.DeleteWarehouseItemAsync(IWarehouseItem item)
         {
             await ServiceRunner.RunAsync(() =>
              {
-                 _warehouseProvider.DeleteWarehouseItem(item.Id);
+                 _storage.DeleteWarehouseItem(item.Id);
                  _warehouseItems.Remove(item);
              });
         }        
