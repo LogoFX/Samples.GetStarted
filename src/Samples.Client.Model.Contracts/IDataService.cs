@@ -13,18 +13,6 @@ namespace Samples.Client.Model.Contracts
 
         Task SaveWarehouseItemAsync(IWarehouseItem item);
 
-        Task DeleteWarehouseItemAsync(IWarehouseItem item);
-
-        //TODO: make async
-        void StartEventMonitoring();
-
-        //TODO: make async
-        void StopEventMonitoring();
-
-        Task ClearEventsAsync();
-
-        IEnumerable<IEvent> Events { get; }
-
-        bool EventMonitoringStarted { get; }
+        Task DeleteWarehouseItemAsync(IWarehouseItem item);       
     }
 }

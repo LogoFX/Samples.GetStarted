@@ -61,9 +61,7 @@
   <ItemGroup>
     <Compile Include="AppModel.cs" />
     <Compile Include="DataService.cs" />
-    <Compile Include="Event.cs" />
     <Compile Include="LoginService.cs" />
-    <Compile Include="Mappers\EventMapper.cs" />
     <Compile Include="Mappers\MappingProfile.cs" />
     <Compile Include="Mappers\WarehouseMapper.cs" />
     <Compile Include="MappingModule.cs" />

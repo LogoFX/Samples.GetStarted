@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 using JetBrains.Annotations;
 using LogoFX.Client.Core;
 using LogoFX.Core;
@@ -15,46 +13,12 @@ namespace Samples.Client.Model
     [UsedImplicitly]
     internal sealed class DataService : NotifyPropertyChangedBase<DataService>, IDataService
     {
-        private readonly IWarehouseProvider _warehouseProvider;
-        private readonly IEventsProvider _eventsProvider;
-        private readonly RangeObservableCollection<IWarehouseItem> _warehouseItems = new RangeObservableCollection<IWarehouseItem>();
-
-        private readonly DispatcherTimer _timer;
-        private DateTime _lastEvenTime;
-        private readonly RangeObservableCollection<IEvent> _events =
-            new RangeObservableCollection<IEvent>();
+        private readonly IWarehouseProvider _warehouseProvider;        
+        private readonly RangeObservableCollection<IWarehouseItem> _warehouseItems = new RangeObservableCollection<IWarehouseItem>();        
 
         public DataService(IWarehouseProvider warehouseProvider, IEventsProvider eventsProvider)
         {
-            _warehouseProvider = warehouseProvider;
-            _eventsProvider = eventsProvider;
-
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(1000);
-            _timer.Tick += OnTimer;
-        }
-
-        private async void OnTimer(object sender, EventArgs e)
-        {
-            await ServiceRunner.RunAsync(() =>
-             {
-                 var events = (_eventsProvider.GetLastEvents(_lastEvenTime))
-                     .Select(EventMapper.MapToEvent)
-                     .ToList();
-
-                 if (events.Count == 0)
-                 {
-                     return;
-                 }
-
-                 var max = events.Max(x => x.Time);
-                 if (max > _lastEvenTime)
-                 {
-                     _lastEvenTime = max;
-                 }
-
-                 _events.AddRange(events);
-             });
+            _warehouseProvider = warehouseProvider;           
         }
 
         private async Task GetWarehouseItemsInternal()
@@ -107,36 +71,6 @@ namespace Samples.Client.Model
                  _warehouseProvider.DeleteWarehouseItem(item.Id);
                  _warehouseItems.Remove(item);
              });
-        }
-
-        void IDataService.StartEventMonitoring()
-        {
-            _lastEvenTime = DateTime.Now;
-            _timer.Start();
-            NotifyOfPropertyChange(() => EventMonitoringStarted);
-        }
-
-        void IDataService.StopEventMonitoring()
-        {
-            _timer.Stop();
-            NotifyOfPropertyChange(() => EventMonitoringStarted);
-        }
-        
-        async Task IDataService.ClearEventsAsync()
-        {
-            await Task.Delay(400);
-            _events.Clear();
-            await Task.Delay(300);
-        }
-
-        IEnumerable<IEvent> IDataService.Events
-        {
-            get { return _events; }
-        }
-
-        public bool EventMonitoringStarted
-        {
-            get { return _timer.IsEnabled; }
-        }
+        }        
     }
 }

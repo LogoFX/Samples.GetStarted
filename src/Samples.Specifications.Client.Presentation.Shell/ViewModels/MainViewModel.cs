@@ -123,13 +123,7 @@ namespace Samples.Specifications.Client.Presentation.Shell.ViewModels
             ActiveWarehouseItem = selectedItem == null ? null :
                 _viewModelCreatorService.CreateViewModel<IWarehouseItem, WarehouseItemContainerViewModel>(
                     ((WarehouseItemViewModel) WarehouseItems.Items.SelectedItem).Model);
-        }
-
-        private EventsViewModel _events;
-        public EventsViewModel Events
-        {
-            get { return _events ?? (_events = _viewModelCreatorService.CreateViewModel<EventsViewModel>()); }
-        }        
+        }            
 
         private async void NewWarehouseItem()
         {            

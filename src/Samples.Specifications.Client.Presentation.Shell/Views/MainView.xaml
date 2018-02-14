@@ -15,10 +15,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4" />
-            <ColumnDefinition Width="200" MinWidth="20" MaxWidth="400" />
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="0"
               Margin="5">
             <Grid.RowDefinitions>
@@ -28,22 +26,12 @@
 
             <ContentControl Grid.Row="0"
                             cal:View.Model="{Binding Path=ActiveWarehouseItem, Mode=OneWay}"/>
-            
+
             <ContentControl Grid.Row="1"
-                            cal:View.Model="{Binding Path=WarehouseItems, Mode=OneTime}" />     
+                            cal:View.Model="{Binding Path=WarehouseItems, Mode=OneTime}" />
         </Grid>
 
-        <GridSplitter Grid.Column="1"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      ResizeDirection="Columns" />
-        
-        <Grid Grid.Column="2">
-            <ContentControl cal:View.Model="{Binding Path=Events, Mode=OneWay}" />
-        </Grid>
-        
-        <Grid Grid.Column="0"
-              Grid.ColumnSpan="3"
+        <Grid Grid.Column="0"             
               Visibility="{Binding Path=IsBusy, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
             <ProgressBar Height="24" 
                          AutomationProperties.AutomationId="Main_Progress"

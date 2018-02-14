@@ -10,19 +10,13 @@ namespace Samples.Client.Model.Mappers
         [Obsolete("Create a constructor and configure inside of your profile\'s constructor instead. Will be removed in 6.0")]
         protected override void Configure()
         {
-            CreateWarehouseMaps();
-            CreateEventMaps();
+            CreateWarehouseMaps();           
         }
 
         private void CreateWarehouseMaps()
         {
             CreateDomainObjectMap<WarehouseItemDto, IWarehouseItem, WarehouseItem>();
-        }
-
-        private void CreateEventMaps()
-        {
-            CreateDomainObjectMap<EventDto, IEvent, Event>();
-        }
+        }        
 
         //TODO: put this piece of functionality into 
         //an external package, e.g. Model.Mapping.AutoMapper
