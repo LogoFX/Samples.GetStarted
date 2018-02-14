@@ -11,7 +11,7 @@ namespace Samples.GetStarted.Launcher
         {            
             var bootstrapper = new AppBootstrapper();
             bootstrapper
-                .UseResolver()
+                .UseResolver()   
                 .UseCommanding()
                 .UseViewModelCreatorService()
                 .UseViewModelFactory()

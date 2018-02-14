@@ -34,7 +34,6 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         public event EventHandler LoggedInSuccessfully;
 
         private ICommand _loginCommand;
-
         public ICommand LoginCommand
         {
             get
@@ -63,12 +62,13 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
                                    Password = string.Empty;
                                    IsBusy = false;
                                }
-                           }));
+                           })
+                           .RequeryOnPropertyChanged(this, () => UserName)
+                           .RequeryOnPropertyChanged(this, () => Password));
             }
         }
 
         private ICommand _cancelCommand;
-
         public ICommand LoginCancelCommand
         {
             get
@@ -83,7 +83,6 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         }
 
         private bool _savePassword;
-
         public bool SavePassword
         {
             get { return _savePassword; }
