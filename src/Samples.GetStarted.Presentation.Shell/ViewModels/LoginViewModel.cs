@@ -34,58 +34,48 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         public event EventHandler LoggedInSuccessfully;
 
         private ICommand _loginCommand;
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return _loginCommand ??
-                       (_loginCommand = ActionCommand
-                           .When(() => !string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password))
-                           .Do(async () =>
-                           {
-                               LoginFailureCause = null;
 
-                               try
-                               {
-                                   IsBusy = true;
-                                   await _loginService.LoginAsync(UserName, Password);
-                                   OnLoginSuccess();
-                               }
+        public ICommand LoginCommand => _loginCommand ??
+                                        (_loginCommand = ActionCommand
+                                            .When(() => !string.IsNullOrWhiteSpace(UserName) &&
+                                                        !string.IsNullOrWhiteSpace(Password))
+                                            .Do(async () =>
+                                            {
+                                                LoginFailureCause = null;
 
-                               catch (Exception ex)
-                               {
-                                   LoginFailureCause = "Failed to log in: " + ex.Message;
-                               }
+                                                try
+                                                {
+                                                    IsBusy = true;
+                                                    await _loginService.LoginAsync(UserName, Password);
+                                                    OnLoginSuccess();
+                                                }
 
-                               finally
-                               {
-                                   Password = string.Empty;
-                                   IsBusy = false;
-                               }
-                           })
-                           .RequeryOnPropertyChanged(this, () => UserName)
-                           .RequeryOnPropertyChanged(this, () => Password));
-            }
-        }
+                                                catch (Exception ex)
+                                                {
+                                                    LoginFailureCause = "Failed to log in: " + ex.Message;
+                                                }
+
+                                                finally
+                                                {
+                                                    Password = string.Empty;
+                                                    IsBusy = false;
+                                                }
+                                            })
+                                            .RequeryOnPropertyChanged(this, () => UserName)
+                                            .RequeryOnPropertyChanged(this, () => Password));
 
         private ICommand _cancelCommand;
-        public ICommand LoginCancelCommand
-        {
-            get
-            {
-                return _cancelCommand ??
-                       (_cancelCommand = ActionCommand
-                           .Do(() =>
-                           {
-                               TryClose();
-                           }));
-            }
-        }
+        public ICommand LoginCancelCommand => _cancelCommand ??
+                                              (_cancelCommand = ActionCommand
+                                                  .Do(() =>
+                                                  {
+                                                      TryClose();
+                                                  }));
 
         private bool _savePassword;
         public bool SavePassword
         {
-            get { return _savePassword; }
+            get => _savePassword;
             set
             {
                 if (_savePassword == value)
@@ -99,11 +89,10 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         }
 
         private string _loginFailureCause;
-
         public string LoginFailureCause
         {
-            get { return _loginFailureCause; }
-            set
+            get => _loginFailureCause;
+            private set
             {
                 if (_loginFailureCause == value)
                     return;
@@ -114,16 +103,12 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
             }
         }
 
-        public bool IsLoginFailureTextVisible
-        {
-            get { return string.IsNullOrWhiteSpace(LoginFailureCause) == false; }
-        }
-        
-        private string _userName;
+        public bool IsLoginFailureTextVisible => string.IsNullOrWhiteSpace(LoginFailureCause) == false;
 
+        private string _userName;
         public string UserName
         {
-            get { return _userName; }
+            get => _userName;
             set
             {
                 _userName = value;
@@ -132,10 +117,9 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         }
        
         private string _password = string.Empty;
-
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 if (_password == value)
@@ -150,22 +134,11 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         {
             Settings.Default.SavePassword = SavePassword;
             Settings.Default.SavedUsername = UserName;
-
-            if (SavePassword)
-            {
-                Settings.Default.SavedPassword = Password;
-            }
-            else
-            {
-                Settings.Default.SavedPassword = string.Empty;
-            }
+            Settings.Default.SavedPassword = SavePassword ? Password : string.Empty;
 
             TryClose(true);
 
-            if (LoggedInSuccessfully != null)
-            {
-                LoggedInSuccessfully(this, new EventArgs());
-            }
+            LoggedInSuccessfully?.Invoke(this, new EventArgs());
         }        
     }
 }

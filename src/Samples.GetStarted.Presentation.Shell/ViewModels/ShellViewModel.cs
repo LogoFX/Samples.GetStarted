@@ -32,25 +32,17 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         }
 
         private ICommand _closeCommand;
-
-        public ICommand CloseCommand
-        {
-            get
-            {
-                return _closeCommand ??
+        public ICommand CloseCommand => _closeCommand ??
                        (_closeCommand = ActionCommand
                            .Do(() =>
                            {
                                TryClose();
                            }));
-            }
-        }
-        
-        private bool _isBusy;
 
+        private bool _isBusy;
         public bool IsBusy
         {
-            get { return _isBusy; }
+            get => _isBusy;
             set
             {
                 if (_isBusy == value)
@@ -61,16 +53,10 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
             }
         }
 
-        public bool IsLoggedIn
-        {
-            get { return UserContext.Current != null; }
-        }                  
+        public bool IsLoggedIn => UserContext.Current != null;
 
         private LoginViewModel _loginViewModel;
-        public LoginViewModel LoginViewModel
-        {
-            get { return _loginViewModel ?? (_loginViewModel = CreateLoginViewModel()); }
-        }
+        public LoginViewModel LoginViewModel => _loginViewModel ?? (_loginViewModel = CreateLoginViewModel());
 
         private LoginViewModel CreateLoginViewModel()
         {
@@ -78,10 +64,7 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         }
 
         private MainViewModel _mainViewModel;
-        public MainViewModel MainViewModel
-        {
-            get { return _mainViewModel ?? (_mainViewModel = CreateMainViewModel()); }
-        }
+        public MainViewModel MainViewModel => _mainViewModel ?? (_mainViewModel = CreateMainViewModel());
 
         private MainViewModel CreateMainViewModel()
         {

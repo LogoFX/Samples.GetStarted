@@ -37,10 +37,7 @@ namespace Samples.Client.Model
             
         }
 
-        IEnumerable<IWarehouseItem> IDataService.WarehouseItems
-        {
-            get { return _warehouseItems; }
-        }
+        IEnumerable<IWarehouseItem> IDataService.WarehouseItems => _warehouseItems;
 
         async Task IDataService.GetWarehouseItemsAsync()
         {

@@ -15,16 +15,10 @@ namespace Samples.GetStarted.Presentation.Shell.ViewModels
         public MessageResult Result { get; private set; }
 
         private ICommand _closeCommand;
-        public ICommand CloseCommand
+        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = ActionCommand<MessageResult>.Do(r =>
         {
-            get
-            {
-                return _closeCommand ?? (_closeCommand = ActionCommand<MessageResult>.Do(r =>
-                {
-                    Result = r;
-                    TryClose(true);
-                }));
-            }
-        }        
+            Result = r;
+            TryClose(true);
+        }));
     }
 }
