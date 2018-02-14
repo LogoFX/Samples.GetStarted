@@ -1,6 +1,7 @@
 ﻿using LogoFX.Client.Bootstrapping;
 using LogoFX.Client.Mvvm.Commanding;
-using Samples.Specifications.Client.Launcher.Shared;
+using LogoFX.Client.Mvvm.ViewModel.Services;
+using LogoFX.Client.Mvvm.ViewModelFactory.SimpleContainer;
 
 namespace Samples.Specifications.Client.Launcher
 {
@@ -12,7 +13,8 @@ namespace Samples.Specifications.Client.Launcher
             bootstrapper
                 .UseResolver()
                 .UseCommanding()
-                .UseShared()
+                .UseViewModelCreatorService()
+                .UseViewModelFactory()
                 .Initialize();            
         }
     }
