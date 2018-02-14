@@ -4,7 +4,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Samples.Specifications.Client.Presentation.Shared;component/Themes/LogoFX/LogoFX.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Samples.GetStarted.Presentation.Shared;component/Themes/LogoFX/LogoFX.Dark.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
