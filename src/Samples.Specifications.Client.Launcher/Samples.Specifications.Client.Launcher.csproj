@@ -247,6 +247,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Samples.Client.Model\Samples.Client.Model.csproj">
+      <Project>{33766857-5fce-4c2c-b167-e76a9f521ff0}</Project>
+      <Name>Samples.Client.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples.Specifications.Client.Data.Fake.ProviderBuilders.Setup\Samples.Specifications.Client.Data.Fake.ProviderBuilders.Setup.csproj">
+      <Project>{1db4c693-200d-46dc-af84-3c0ad40392b5}</Project>
+      <Name>Samples.Specifications.Client.Data.Fake.ProviderBuilders.Setup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples.Specifications.Client.Data.Fake.Providers\Samples.Specifications.Client.Data.Fake.Providers.csproj">
+      <Project>{e27a6439-921c-455f-a062-1ebcb50f439f}</Project>
+      <Name>Samples.Specifications.Client.Data.Fake.Providers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Samples.Specifications.Client.Presentation.Shell\Samples.Specifications.Client.Presentation.Shell.csproj">
       <Project>{5270F84D-8FF4-4756-83B0-78DD9777643D}</Project>
       <Name>Samples.Specifications.Client.Presentation.Shell</Name>
