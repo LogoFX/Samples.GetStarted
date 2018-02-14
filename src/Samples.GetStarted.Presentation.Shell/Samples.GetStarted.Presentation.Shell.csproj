@@ -253,7 +253,7 @@
       <Name>Samples.Client.Model.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Samples.Client.Model.Shared\Samples.Client.Model.Shared.csproj">
-      <Project>{49724A56-9FA9-44C4-B731-1E414EE598BC}</Project>
+      <Project>{59993893-84fb-4685-ab53-445d8da5c01b}</Project>
       <Name>Samples.Client.Model.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\Samples.GetStarted.Presentation.Shared\Samples.GetStarted.Presentation.Shared.csproj">
