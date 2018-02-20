@@ -3,13 +3,139 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:viewModels="clr-namespace:Samples.GetStarted.Presentation.Shell.ViewModels"          
+        xmlns:viewModels="clr-namespace:Samples.GetStarted.Presentation.Shell.ViewModels"      
         mc:Ignorable="d"             
-        d:DataContext="{d:DesignInstance viewModels:ShellViewModel}"
-        Title="{Binding DisplayName, Mode=OneTime}"
-        Height="350" Width="350"
+        d:DataContext="{d:DesignInstance viewModels:ShellViewModel}"        
+        Height="350" Width="500"
         d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="{Binding DisplayName, Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--Kind-->
+            <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Text="Kind" />
+            <TextBox 
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="5,0,0,0"
+                 VerticalAlignment="Center"
+                 Text="{Binding Path=Model.Kind, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+
+            <!--Price-->
+            <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Text="Price" />
+            <TextBox 
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="5,0,0,0"
+                 VerticalAlignment="Center"
+                 Text="{Binding Path=Model.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}">
+            </TextBox>
+
+            <!--Quantity-->
+            <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Text="Quantity" />
+            <TextBox
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="5,0,0,0"
+                 VerticalAlignment="Center"
+                 Text="{Binding Path=Model.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+
+            <!--TotalCost-->
+            <TextBlock Grid.Row="3"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Text="Total Cost" />
+            <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="5,0,0,0"
+                 VerticalAlignment="Center"
+                 Focusable="False"
+                 IsReadOnly="True"
+                 Text="{Binding Path=Model.TotalCost, Mode=OneWay}" />
+
+            <!--Error Info-->
+            <TextBlock 
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   VerticalAlignment="Center"
+                   Foreground="Red"
+                   Text="{Binding Path=Model.Error, Mode=OneWay}" />
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Save"
+                    Width="100"
+                    Height="24"
+                    Command="{Binding ApplyCommand, Mode=OneWay}"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center">
+            </Button>
+
+            <Button Grid.Column="1"                
+                    Margin="5,0,0,0"
+                    Content="Cancel"
+                    Command="{Binding CancelChangesCommand, Mode=OneWay}"
+                    Width="100"
+                    Height="24"
+                    VerticalAlignment="Center">
+            </Button>
+
+            <Button Grid.Column="2"                
+                    Margin="5,0,0,0"
+                    Content="Undo"
+                    Command="{Binding UndoCommand, Mode=OneWay}"
+                    Width="100"
+                    Height="24"
+                    VerticalAlignment="Center">
+            </Button>
+
+            <Button Grid.Column="3"                
+                    Margin="5,0,0,0"
+                    Content="Redo"
+                    Command="{Binding RedoCommand, Mode=OneWay}"
+                    Width="100"
+                    Height="24"
+                    VerticalAlignment="Center">
+            </Button>
+        </Grid>
     </Grid>
 </Window>

@@ -2,6 +2,6 @@
 {    
     public interface IDataService
     {
-        //TODO: Add some methods
+        IWarehouseItem SingleItem { get; }        
     }
 }

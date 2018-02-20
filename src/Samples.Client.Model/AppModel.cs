@@ -4,7 +4,7 @@ using Samples.Client.Model.Contracts;
 
 namespace Samples.Client.Model
 {    
-    internal abstract class AppModel : EditableModel<Guid>, IAppModel
+    internal abstract class AppModel : EditableModel<Guid>.WithUndoRedo, IAppModel
     {                
     }
 }
