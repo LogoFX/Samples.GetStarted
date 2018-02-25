@@ -5,11 +5,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Samples.GetStarted.Presentation.Shell")]
+[assembly: AssemblyTitle("Samples.GetStarted.WPF.Presentation.Shell")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Samples.GetStarted.Presentation.Shell")]
+[assembly: AssemblyProduct("Samples.GetStarted.WPF.Presentation.Shell")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

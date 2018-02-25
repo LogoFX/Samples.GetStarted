@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Samples.GetStarted.Presentation.Shell.Properties {
+namespace Samples.GetStarted.WPF.Presentation.Shell.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,8 +1,8 @@
 ﻿using LogoFX.Client.Bootstrapping;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
-using Samples.GetStarted.Presentation.Shell.ViewModels;
+using Samples.GetStarted.WPF.Presentation.Shell.ViewModels;
 
-namespace Samples.GetStarted.Launcher
+namespace Samples.GetStarted.WPF.Launcher
 {
     public sealed class AppBootstrapper : BootstrapperContainerBase<ExtendedSimpleContainerAdapter>
         .WithRootObject<ShellViewModel>

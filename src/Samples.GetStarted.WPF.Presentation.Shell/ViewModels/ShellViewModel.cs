@@ -4,7 +4,7 @@ using LogoFX.Client.Mvvm.Commanding;
 using LogoFX.Client.Mvvm.ViewModel.Extensions;
 using Samples.Client.Model.Contracts;
 
-namespace Samples.GetStarted.Presentation.Shell.ViewModels
+namespace Samples.GetStarted.WPF.Presentation.Shell.ViewModels
 {    
     public class ShellViewModel : EditableObjectViewModel<IWarehouseItem>
     {        

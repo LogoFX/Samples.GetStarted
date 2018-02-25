@@ -7,8 +7,8 @@
     <ProjectGuid>{1344B63D-D9A3-452F-9E42-BFA2CE948681}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Samples.GetStarted.Launcher</RootNamespace>
-    <AssemblyName>Samples.GetStarted.Launcher</AssemblyName>
+    <RootNamespace>Samples.GetStarted.WPF.Launcher</RootNamespace>
+    <AssemblyName>Samples.GetStarted.WPF.Launcher</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -189,7 +189,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Samples.GetStarted.Presentation.Shell\Samples.GetStarted.Presentation.Shell.csproj">
+    <ProjectReference Include="..\Samples.GetStarted.WPF.Presentation.Shell\Samples.GetStarted.WPF.Presentation.Shell.csproj">
       <Project>{5270F84D-8FF4-4756-83B0-78DD9777643D}</Project>
       <Name>Samples.GetStarted.Presentation.Shell</Name>
     </ProjectReference>

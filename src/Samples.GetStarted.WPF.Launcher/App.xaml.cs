@@ -1,5 +1,6 @@
 ﻿using LogoFX.Client.Bootstrapping;
 using LogoFX.Client.Mvvm.Commanding;
+using Samples.GetStarted.WPF.Launcher;
 
 namespace Samples.GetStarted.Launcher
 {

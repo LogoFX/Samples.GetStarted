@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Samples.GetStarted.Presentation.Shell.Properties {
+namespace Samples.GetStarted.WPF.Presentation.Shell.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Samples.GetStarted.Presentation.Shell.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Samples.GetStarted.Presentation.Shell.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Samples.GetStarted.WPF.Presentation.Shell.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
