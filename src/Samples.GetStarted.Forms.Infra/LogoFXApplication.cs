@@ -5,7 +5,7 @@ using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Xamarin.Forms;
 
-namespace Samples.GetStarted.Forms.Launcher
+namespace Samples.GetStarted.Forms.Infra
 {
     public class LogoFXApplication<TBootstrapper, TRootViewModel> : FormsApplication
         where TBootstrapper : BootstrapperBase

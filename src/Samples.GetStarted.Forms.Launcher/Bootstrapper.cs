@@ -1,4 +1,5 @@
-﻿using Solid.Practices.IoC;
+﻿using Samples.GetStarted.Forms.Infra;
+using Solid.Practices.IoC;
 
 namespace Samples.GetStarted.Forms.Launcher
 {

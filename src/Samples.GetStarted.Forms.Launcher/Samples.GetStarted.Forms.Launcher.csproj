@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Samples.GetStarted.Forms.Presentation.Shell\Samples.GetStarted.Forms.Presentation.Shell.csproj" />
-    <ProjectReference Include="..\Samples.GetStarted.Forms.Shared\Samples.GetStarted.Forms.Shared.csproj" />
     <ProjectReference Include="..\Samples.GetStarted.Forms.Infra\Samples.GetStarted.Forms.Infra.csproj" />
   </ItemGroup>
 </Project>

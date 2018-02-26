@@ -1,12 +1,12 @@
 ﻿using LogoFX.Client.Bootstrapping.Adapters.Contracts;
-using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using Solid.Practices.IoC;
 
-namespace Samples.GetStarted.Forms.Shared
+namespace Samples.GetStarted.Forms.Infra
 {
-    public static class ContainerContext
+    public static class ContainerContext<TContainerAdapter>
+        where TContainerAdapter : IDependencyRegistrator, IDependencyResolver, IBootstrapperAdapter, new()
     {
-        private static readonly ExtendedSimpleContainerAdapter _instance = new ExtendedSimpleContainerAdapter();
+        private static readonly TContainerAdapter _instance = new TContainerAdapter();
 
         public static IDependencyRegistrator Registrator => _instance;
                
@@ -14,4 +14,5 @@ namespace Samples.GetStarted.Forms.Shared
 
         public static IBootstrapperAdapter Adapter => _instance;
     }
+     
 }

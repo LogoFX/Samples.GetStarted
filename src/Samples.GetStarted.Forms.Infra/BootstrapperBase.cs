@@ -10,7 +10,7 @@ using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
-namespace Samples.GetStarted.Forms.Launcher
+namespace Samples.GetStarted.Forms.Infra
 {
     public class BootstrapperBase : IInitializable,
         IExtensible<BootstrapperBase>,

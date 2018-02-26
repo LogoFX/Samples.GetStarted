@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Infra\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -176,14 +177,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="LogoFXApplicationDelegate.cs" />
     <Compile Include="ApplicationDelegate.cs" />
+    <Compile Include="Infra\LogoFXApplicationDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Samples.GetStarted.Forms.Shared\Samples.GetStarted.Forms.Shared.csproj">
-      <Project>{DC0E6271-75BE-49D3-B0D7-B1ABC67F0981}</Project>
-      <Name>Samples.GetStarted.Forms.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Samples.GetStarted.Forms.Launcher\Samples.GetStarted.Forms.Launcher.csproj">
       <Project>{2E0C641F-78B1-4437-9401-9E8BCDF20D4D}</Project>
       <Name>Samples.GetStarted.Forms.Launcher</Name>

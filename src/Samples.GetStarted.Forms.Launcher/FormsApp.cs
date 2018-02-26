@@ -1,4 +1,5 @@
-﻿using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
+﻿using Samples.GetStarted.Forms.Infra;
+using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
 using Solid.Practices.IoC;
 
 namespace Samples.GetStarted.Forms.Launcher

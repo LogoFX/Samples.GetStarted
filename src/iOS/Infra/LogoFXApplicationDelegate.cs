@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Windows.Threading;
 using Caliburn.Micro;
-using Samples.GetStarted.Forms.Launcher;
-using Samples.GetStarted.Forms.Shared;
+using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+using Samples.GetStarted.Forms.Infra;
+using Solid.Practices.IoC;
 
 namespace Samples.GetStarted.iOS
 {
-    public class LogoFXApplicationDelegate<TApp, TBootstrapper> : CaliburnApplicationDelegate
+    public class LogoFXApplicationDelegate<TApp, TBootstrapper, TContainerAdapter> : CaliburnApplicationDelegate
         where TApp : class
         where TBootstrapper : class
+        where TContainerAdapter: IDependencyRegistrator, IDependencyResolver, IBootstrapperAdapter, new()
     {
         public LogoFXApplicationDelegate()
         {
@@ -18,23 +20,23 @@ namespace Samples.GetStarted.iOS
 
         protected override void Configure()
         {
-            Bridge<TApp, TBootstrapper>.Initialize();
+            Bridge<TApp, TBootstrapper, TContainerAdapter>.Initialize();
             Dispatch.Current = new PlatformDispatch();
         }
 
         protected override void BuildUp(object instance)
         {
-            ContainerContext.Adapter.BuildUp(instance);
+            ContainerContext<TContainerAdapter>.Adapter.BuildUp(instance);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
-            return ContainerContext.Adapter.GetAllInstances(service);
+            return ContainerContext<TContainerAdapter>.Adapter.GetAllInstances(service);
         }
 
         protected override object GetInstance(Type service, string key)
         {
-            return ContainerContext.Adapter.GetInstance(service, key);
+            return ContainerContext<TContainerAdapter>.Adapter.GetInstance(service, key);
         }
               
     }
