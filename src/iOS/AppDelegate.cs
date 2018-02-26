@@ -8,7 +8,7 @@ namespace Samples.GetStarted.iOS
     [Register("AppDelegate")]
     public class AppDelegate : Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        private readonly CaliburnAppDelegate appDelegate = new CaliburnAppDelegate();
+        private readonly ApplicationDelegate appDelegate = new ApplicationDelegate();
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {

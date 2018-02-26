@@ -176,7 +176,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="CaliburnAppDelegate.cs" />
+    <Compile Include="LogoFXApplicationDelegate.cs" />
+    <Compile Include="ApplicationDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Samples.GetStarted.Forms.Shared\Samples.GetStarted.Forms.Shared.csproj">
@@ -190,6 +191,10 @@
     <ProjectReference Include="..\Samples.GetStarted.Forms.Presentation.Shell\Samples.GetStarted.Forms.Presentation.Shell.csproj">
       <Project>{678AF5F6-57F5-4852-A461-1266A8E6D9AA}</Project>
       <Name>Samples.GetStarted.Forms.Presentation.Shell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples.GetStarted.Forms.Infra\Samples.GetStarted.Forms.Infra.csproj">
+      <Project>{A49DAA60-1153-44B1-9A6B-0D9A826EBBCE}</Project>
+      <Name>Samples.GetStarted.Forms.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

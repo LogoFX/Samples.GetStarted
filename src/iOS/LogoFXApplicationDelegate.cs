@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows.Threading;
 using Caliburn.Micro;
 using Samples.GetStarted.Forms.Launcher;
-using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
 using Samples.GetStarted.Forms.Shared;
 
 namespace Samples.GetStarted.iOS
 {
-    public class CaliburnAppDelegate : CaliburnApplicationDelegate
+    public class LogoFXApplicationDelegate<TApp, TBootstrapper> : CaliburnApplicationDelegate
+        where TApp : class
+        where TBootstrapper : class
     {
-        public CaliburnAppDelegate()
+        public LogoFXApplicationDelegate()
         {
             Initialize();
         }
 
         protected override void Configure()
         {
-            Bridge.Initialize();
+            Bridge<TApp, TBootstrapper>.Initialize();
             Dispatch.Current = new PlatformDispatch();
         }
 
@@ -36,15 +36,6 @@ namespace Samples.GetStarted.iOS
         {
             return ContainerContext.Adapter.GetInstance(service, key);
         }
-
-        protected override IEnumerable<Assembly> SelectAssemblies()
-        {
-            return
-                new[]
-                {                    
-                    //TODO: Needed for views to be registered - consider using this manually in the bootstrapper
-                    typeof(ShellViewModel).Assembly
-                };
-        }
+              
     }
 }

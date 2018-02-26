@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using Android.App;
-using Android.Runtime;
 using Samples.GetStarted.Forms.Launcher;
 using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
 
-namespace Samples.GetStarted.Droid
+namespace Samples.GetStarted.iOS
 {
-    [Application]
-    public class Application : LogoFXApplication<FormsApp, Bootstrapper>
+    public class ApplicationDelegate : LogoFXApplicationDelegate<FormsApp, Bootstrapper>
     {
-        public Application(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
-        {
-        }
-
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
             return
                 new[]
                 {                    
                     //TODO: Needed for views to be registered - consider using this manually in the bootstrapper
-                    Assembly.GetAssembly(typeof(ShellViewModel))
+                    typeof(ShellViewModel).Assembly
                 };
-
         }
     }
 }
