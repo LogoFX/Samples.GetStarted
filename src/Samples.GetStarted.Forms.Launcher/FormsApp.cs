@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
+using LogoFX.Bootstrapping;
 using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
 using Solid.Practices.IoC;
 using Xamarin.Forms;
@@ -15,8 +16,9 @@ namespace Samples.GetStarted.Forms.Launcher
 
             _dependencyRegistrator = dependencyRegistrator;
             var bootstrapper =
-                new Bootstrapper(_dependencyRegistrator);
-            bootstrapper.Initialize();
+                new Bootstrapper(_dependencyRegistrator)
+                .Use(new RegisterCompositionModulesMiddleware<Bootstrapper>());
+            bootstrapper.Initialize();           
             DisplayRootViewFor<ShellViewModel>();
         }
 

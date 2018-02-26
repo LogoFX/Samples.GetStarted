@@ -42,7 +42,8 @@ namespace Samples.GetStarted.Forms.Launcher
 
         public IEnumerable<Assembly> Assemblies => new Assembly[]
             {
-                Assembly.GetAssembly(typeof(ShellViewModel))               
+                Assembly.GetAssembly(typeof(ShellViewModel)),
+                Assembly.GetExecutingAssembly()
             };
 
         private void InitializeCompositionModules()

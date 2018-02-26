@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace Samples.GetStarted.Forms.Presentation.Shell
+namespace Samples.GetStarted.Forms.Presentation.Shell.Views
 {
-    public partial class ShellView : ContentView
+    public partial class ShellView : ContentPage
     {
         public ShellView()
         {

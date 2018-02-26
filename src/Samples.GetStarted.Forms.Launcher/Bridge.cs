@@ -6,10 +6,9 @@ namespace Samples.GetStarted.Forms.Launcher
     {
         public static void Initialize()
         {
-            ContainerContext.Registrator
-                .AddInstance(ContainerContext.Registrator)
-                .AddInstance(ContainerContext.Resolver)
-                .AddSingleton<FormsApp>();
+            ContainerContext.Registrator.RegisterInstance(ContainerContext.Registrator);
+            ContainerContext.Registrator.RegisterInstance(ContainerContext.Resolver);
+            ContainerContext.Registrator.RegisterSingleton<FormsApp>();
         }
     }
 }

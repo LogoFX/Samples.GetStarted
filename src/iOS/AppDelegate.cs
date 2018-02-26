@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using Samples.GetStarted.Forms.Launcher;
+using Samples.GetStarted.Forms.Shared;
 using UIKit;
 
 namespace Samples.GetStarted.iOS
 {
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public class AppDelegate : Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        private readonly CaliburnAppDelegate appDelegate = new CaliburnAppDelegate();
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
 
-            LoadApplication(new App());
+            LoadApplication(ContainerContext.Resolver.Resolve<FormsApp>());
 
             return base.FinishedLaunching(app, options);
         }
