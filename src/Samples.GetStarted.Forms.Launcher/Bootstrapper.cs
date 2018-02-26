@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;
 using Solid.Bootstrapping;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
@@ -27,7 +26,7 @@ namespace Samples.GetStarted.Forms.Launcher
         public Bootstrapper(IDependencyRegistrator dependencyRegistrator)
         {
             Registrator = dependencyRegistrator;
-            PlatformProvider.Current = new NetStandardPlatformProvider();
+            PlatformProvider.Current = new NetStandardPlatformProvider();           
         }
 
         /// <summary>
@@ -40,11 +39,9 @@ namespace Samples.GetStarted.Forms.Launcher
 
         public IDependencyRegistrator Registrator { get; }
 
-        public IEnumerable<Assembly> Assemblies => new Assembly[]
-            {
-                Assembly.GetAssembly(typeof(ShellViewModel)),
-                Assembly.GetExecutingAssembly()
-            };
+        private IEnumerable<Assembly> _assemblies;
+        public IEnumerable<Assembly> Assemblies => _assemblies ?? 
+            (_assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(t => t.GetName().Name.StartsWith("Samples.GetStarted")));
 
         private void InitializeCompositionModules()
         {            
