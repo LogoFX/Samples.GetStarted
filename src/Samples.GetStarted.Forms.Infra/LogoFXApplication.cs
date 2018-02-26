@@ -1,8 +1,6 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
 using LogoFX.Bootstrapping;
-using Solid.Bootstrapping;
 using Solid.Practices.IoC;
-using Solid.Practices.Middleware;
 using Xamarin.Forms;
 
 namespace Samples.GetStarted.Forms.Infra
@@ -29,16 +27,4 @@ namespace Samples.GetStarted.Forms.Infra
             _dependencyRegistrator.RegisterInstance<INavigationService>(new NavigationPageAdapter(navigationPage));
         }
     }
-
-    public class RegisterRootViewModelMiddleware<TBootstrapper, TRootViewModel> : IMiddleware<TBootstrapper>
-        where TBootstrapper : class, IHaveRegistrator
-        where TRootViewModel : class
-    {
-        public TBootstrapper Apply(TBootstrapper @object)
-        {
-            @object.Registrator.RegisterSingleton<TRootViewModel>();
-            return @object;
-        }
-    }
-
 }
