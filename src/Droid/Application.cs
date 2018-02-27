@@ -21,8 +21,7 @@ namespace Samples.GetStarted.Droid
         {
             return
                 new[]
-                {                    
-                    //TODO: Needed for views to be registered - consider using this manually in the bootstrapper
+                {                                        
                     Assembly.GetAssembly(typeof(ShellViewModel))
                 };
 

@@ -13,8 +13,7 @@ namespace Samples.GetStarted.iOS
         {
             return
                 new[]
-                {                    
-                    //TODO: Needed for views to be registered - consider using this manually in the bootstrapper
+                {                                        
                     typeof(ShellViewModel).Assembly
                 };
         }
