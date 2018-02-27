@@ -1,8 +1,8 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using LogoFX.Client.Bootstrapping.Xamarin.Forms;
 using Samples.GetStarted.Forms.Launcher;
-using Samples.GetStarted.Forms.Infra;
 using Xamarin.Forms.Platform.Android;
 
 namespace Samples.GetStarted.Droid

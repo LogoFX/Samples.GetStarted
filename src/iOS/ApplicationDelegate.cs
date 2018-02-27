@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using LogoFX.Client.Bootstrapping;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using Samples.GetStarted.Forms.Launcher;
 using Samples.GetStarted.Forms.Presentation.Shell.ViewModels;

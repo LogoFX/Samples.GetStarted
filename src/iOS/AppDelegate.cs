@@ -1,6 +1,6 @@
 ﻿using Foundation;
+using LogoFX.Client.Bootstrapping.Xamarin.Forms;
 using Samples.GetStarted.Forms.Launcher;
-using Samples.GetStarted.Forms.Infra;
 using UIKit;
 
 namespace Samples.GetStarted.iOS

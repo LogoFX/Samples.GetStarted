@@ -1,4 +1,4 @@
-﻿using Samples.GetStarted.Forms.Infra;
+﻿using LogoFX.Client.Bootstrapping.Xamarin.Forms;
 using Solid.Practices.IoC;
 
 namespace Samples.GetStarted.Forms.Launcher
