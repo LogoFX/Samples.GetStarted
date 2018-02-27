@@ -3,16 +3,18 @@ using Solid.Practices.IoC;
 
 namespace Samples.GetStarted.Forms.Infra
 {
-    public static class ContainerContext<TContainerAdapter>
-        where TContainerAdapter : IDependencyRegistrator, IDependencyResolver, IBootstrapperAdapter, new()
+    public static class ContainerContext
     {
-        private static readonly TContainerAdapter _instance = new TContainerAdapter();
+        private static object _instance;
 
-        public static IDependencyRegistrator Registrator => _instance;
-               
-        public static IDependencyResolver Resolver => _instance;
+        public static void SetAdapter<TContainerAdapter>(TContainerAdapter containerAdapter)
+            where TContainerAdapter : IDependencyRegistrator, IDependencyResolver, IBootstrapperAdapter => _instance = containerAdapter;
 
-        public static IBootstrapperAdapter Adapter => _instance;
+        public static IDependencyRegistrator Registrator => (IDependencyRegistrator)_instance;
+
+        public static IDependencyResolver Resolver => (IDependencyResolver)_instance;
+
+        public static IBootstrapperAdapter Adapter => (IBootstrapperAdapter)_instance;
     }
      
 }

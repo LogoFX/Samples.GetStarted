@@ -1,5 +1,4 @@
 ﻿using Foundation;
-using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using Samples.GetStarted.Forms.Launcher;
 using Samples.GetStarted.Forms.Infra;
 using UIKit;
@@ -15,7 +14,7 @@ namespace Samples.GetStarted.iOS
         {
             Xamarin.Forms.Forms.Init();
 
-            LoadApplication(ContainerContext<ExtendedSimpleContainerAdapter>.Resolver.Resolve<FormsApp>());
+            LoadApplication(ContainerContext.Resolver.Resolve<FormsApp>());
 
             return base.FinishedLaunching(app, options);
         }

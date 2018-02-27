@@ -5,20 +5,19 @@ using Xamarin.Forms;
 
 namespace Samples.GetStarted.Forms.Infra
 {
-    public class LogoFXApplication<TBootstrapper, TRootViewModel> : FormsApplication
-        where TBootstrapper : BootstrapperBase
+    public class LogoFXApplication<TRootViewModel> : FormsApplication
         where TRootViewModel : class
     {
         private readonly IDependencyRegistrator _dependencyRegistrator;
 
-        public LogoFXApplication(TBootstrapper bootstrapper, IDependencyRegistrator dependencyRegistrator)
+        public LogoFXApplication(BootstrapperBase bootstrapper, IDependencyRegistrator dependencyRegistrator)
         {
             _dependencyRegistrator = dependencyRegistrator;
             Initialize();
             bootstrapper
                 .Use(new RegisterCompositionModulesMiddleware<BootstrapperBase>())
                 .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())
-                .Initialize();            
+                .Initialize();
             DisplayRootViewFor<TRootViewModel>();
         }
 

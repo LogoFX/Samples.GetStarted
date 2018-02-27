@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using Samples.GetStarted.Forms.Launcher;
 using Samples.GetStarted.Forms.Infra;
 using Xamarin.Forms.Platform.Android;
@@ -17,7 +16,7 @@ namespace Samples.GetStarted.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
 
-            LoadApplication(ContainerContext<ExtendedSimpleContainerAdapter>.Resolver.Resolve<FormsApp>());
+            LoadApplication(ContainerContext.Resolver.Resolve<FormsApp>());
         }
     }
 }

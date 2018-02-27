@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Solid.Bootstrapping;
@@ -36,10 +37,14 @@ namespace Samples.GetStarted.Forms.Infra
         /// <value>
         /// The prefixes.
         /// </value>
-        public virtual string[] Prefixes
-        {
-            get { return new string[] { }; }
-        }
+        public virtual string[] Prefixes => new string[] { };
+
+        /// <summary>
+        /// Gets the additional types which can extend the list of assemblies
+        /// to be inspected for app components. Use this to add dynamic assemblies.
+        /// </summary>
+        /// <value>The additional types.</value>
+        public virtual Type[] AdditionalTypes => new Type[] { };
 
         /// <summary>
         /// Gets the list of modules that were discovered during bootstrapper configuration.
@@ -53,7 +58,12 @@ namespace Samples.GetStarted.Forms.Infra
 
         private IEnumerable<Assembly> _assemblies;
         public IEnumerable<Assembly> Assemblies => _assemblies ??
-            (_assemblies = System.AppDomain.CurrentDomain.GetAssemblies().FilterByPrefixes(Prefixes));
+            (_assemblies = LoadAssemblies().FilterByPrefixes(Prefixes));
+
+        private IEnumerable<Assembly> LoadAssemblies()
+        {
+            return AppDomain.CurrentDomain.GetAssemblies();
+        }
 
         private void InitializeCompositionModules()
         {
