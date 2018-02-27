@@ -15,7 +15,7 @@ namespace Samples.GetStarted.Forms.Launcher
         {
             get
             {
-                return new [] { "Samples.GetStarted" };
+                return new [] { "Samples" };
             }
         }
     }
