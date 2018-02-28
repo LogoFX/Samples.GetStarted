@@ -26,5 +26,11 @@ namespace Samples.GetStarted.Forms.Presentation.Shell.ViewModels
 
         private ICommand _redoCommand;
         public ICommand RedoCommand => _redoCommand ?? (_redoCommand = ActionCommand.When(() => Model.CanRedo).Do(() => Model.Redo()).RequeryOnPropertyChanged(this, () => Model.CanRedo));
+
+        private ICommand _testCommand;
+        public ICommand TestCommand => _testCommand ?? (_testCommand = ActionCommand.When(() => true).Do(() =>
+        {
+
+        }));
     }
 }
