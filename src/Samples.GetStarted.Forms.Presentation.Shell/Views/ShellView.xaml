@@ -3,7 +3,36 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="Samples.GetStarted.Forms.Presentation.Shell.Views.ShellView">
-    <Grid>
-        <Label Text="Get started" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-    </Grid>	
+   <StackLayout Margin="0, 20">
+        <Label Text="Editing single item"
+               FontSize="30"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <TableView Intent="Form"
+                   Margin="10, 0">
+            <TableRoot>
+                <TableSection Title="Warehouse item">
+                   <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="15, 0">
+                            <Label Text ="Kind" />  
+                            <Label Text="{Binding Model.Kind, Mode=OneWay}" Margin="50, 0" />
+                        </StackLayout>                                          
+                    </ViewCell>
+                    <EntryCell Label="Price"
+                               Text="{Binding Model.Price, Mode=TwoWay}"
+                               Placeholder = "Enter the price here" />
+                    <EntryCell Label="Quantity"
+                               Text="{Binding Model.Quantity, Mode=TwoWay}"
+                               Placeholder = "Enter the quantity here" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="15, 0">
+                            <Label Text ="Total cost" />  
+                            <Label Text="{Binding Model.TotalCost, Mode=OneWay}" Margin="10, 0" />
+                        </StackLayout>                                          
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </StackLayout>
 </ContentPage>
