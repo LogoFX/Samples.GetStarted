@@ -18,5 +18,7 @@ namespace Samples.GetStarted.Forms.Launcher
                 return new [] { "Samples" };
             }
         }
+
+        public override System.Type[] AdditionalTypes => new System.Type[] { typeof(Samples.Client.Model.Module) };
     }
 }

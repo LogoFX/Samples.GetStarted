@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Samples.GetStarted.Forms.Presentation.Shell\Samples.GetStarted.Forms.Presentation.Shell.csproj" />
+    <ProjectReference Include="..\Samples.Client.Model\Samples.Client.Model.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Xamarin.Forms" Version="1.7.1-rc1" />

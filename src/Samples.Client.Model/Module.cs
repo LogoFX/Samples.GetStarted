@@ -6,7 +6,7 @@ using Solid.Practices.Modularity;
 namespace Samples.Client.Model
 {
     [UsedImplicitly]
-    class Module : ICompositionModule<IDependencyRegistrator>
+    public class Module : ICompositionModule<IDependencyRegistrator>
     {
         public void RegisterModule(IDependencyRegistrator dependencyRegistrator)
         {
