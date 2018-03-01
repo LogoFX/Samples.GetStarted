@@ -11,7 +11,7 @@ namespace Samples.GetStarted.Forms.Presentation.Shell.ViewModels
         public ShellViewModel(IDataService dataService)
             : base(dataService.SingleItem)
         {
-
+            
         }
 
         protected override async Task<bool> SaveMethod(IWarehouseItem model)
@@ -22,15 +22,39 @@ namespace Samples.GetStarted.Forms.Presentation.Shell.ViewModels
         }
 
         private ICommand _undoCommand;
-        public ICommand UndoCommand => _undoCommand ?? (_undoCommand = ActionCommand.When(() => Model.CanUndo).Do(() => Model.Undo()).RequeryOnPropertyChanged(this, () => Model.CanUndo));
+        public ICommand UndoCommand => _undoCommand ?? (_undoCommand = ActionCommand.When(() => 
+        {
+            return Model.CanUndo;
+        }).Do(Model.Undo).RequeryOnPropertyChanged(Model, () => Model.CanUndo));
 
         private ICommand _redoCommand;
-        public ICommand RedoCommand => _redoCommand ?? (_redoCommand = ActionCommand.When(() => Model.CanRedo).Do(() => Model.Redo()).RequeryOnPropertyChanged(this, () => Model.CanRedo));
+        public ICommand RedoCommand => _redoCommand ?? (_redoCommand = ActionCommand.When(() => Model.CanRedo).Do(Model.Redo).RequeryOnPropertyChanged(Model, () => Model.CanRedo));
 
         private ICommand _testCommand;
         public ICommand TestCommand => _testCommand ?? (_testCommand = ActionCommand.When(() => true).Do(() =>
-        {
-
+        {           
+            NotifyOfPropertyChange(() => Model);
         }));
     }
+
+    /*
+    public static class TempExtensions
+    {
+        internal static T MyEx<T>(this T command, INotifyPropertyChanged notifiable, Expression<Func<object>> propertySelector)
+        where
+                T : ICommand, IReceiveEvent
+        {
+            Observable
+                .FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>((a) => notifiable.PropertyChanged += a, (a) => notifiable.PropertyChanged -= a)
+                .Where(a => 
+            {
+                var propName = propertySelector.GetPropertyName();
+                return a.EventArgs.PropertyName == propName;   
+                })
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+
+            return command;
+        }
+    }
+    */
 }
