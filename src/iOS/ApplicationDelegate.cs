@@ -9,13 +9,9 @@ namespace Samples.GetStarted.iOS
 {
     public class ApplicationDelegate : LogoFXApplicationDelegate<FormsApp, Bootstrapper, ExtendedSimpleContainerAdapter>
     {
-        protected override IEnumerable<Assembly> SelectAssemblies()
-        {
-            return
-                new[]
-                {                                        
+        protected override IEnumerable<Assembly> SelectAssemblies() => new[]
+                {
                     typeof(ShellViewModel).Assembly
                 };
-        }
     }
 }

@@ -13,10 +13,7 @@ namespace Samples.GetStarted.Forms.Launcher
 
         public override string[] Prefixes
         {
-            get
-            {
-                return new [] { "Samples" };
-            }
+            get => new[] { "Samples" };
         }
 
         public override System.Type[] AdditionalTypes => new System.Type[] { typeof(Samples.Client.Model.Module) };

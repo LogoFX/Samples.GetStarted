@@ -17,14 +17,9 @@ namespace Samples.GetStarted.Droid
         {
         }
 
-        protected override IEnumerable<Assembly> SelectAssemblies()
-        {
-            return
-                new[]
-                {                                        
+        protected override IEnumerable<Assembly> SelectAssemblies() => new[]
+                {
                     Assembly.GetAssembly(typeof(ShellViewModel))
                 };
-
-        }
     }
 }
