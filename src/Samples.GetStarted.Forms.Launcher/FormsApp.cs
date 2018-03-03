@@ -6,10 +6,8 @@ namespace Samples.GetStarted.Forms.Launcher
 {
     public class FormsApp : LogoFXApplication<ShellViewModel>
     {
-        public FormsApp(Bootstrapper bootstrapper, IDependencyRegistrator dependencyRegistrator) :
-        base(
-            bootstrapper,
-            dependencyRegistrator)
+        public FormsApp(Bootstrapper bootstrapper, IDependencyRegistrator dependencyRegistrator)
+            : base(bootstrapper)
         {
         }
     }

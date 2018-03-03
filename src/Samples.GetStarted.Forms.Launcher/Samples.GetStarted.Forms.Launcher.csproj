@@ -12,6 +12,6 @@
     <ProjectReference Include="..\Samples.Client.Model\Samples.Client.Model.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Xamarin.Forms" Version="1.7.1-rc1" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Xamarin.Forms" Version="1.7.1-rc3" />
   </ItemGroup>
 </Project>
